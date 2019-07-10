@@ -43,6 +43,11 @@ const SideMenu=(props)=>{
 							Nuevo Viaje
 						</Text>
 					</View>
+					<View>
+						<Text style={styles.navItemStyle} onPress={navigateToScreen('ShowViaje')}>
+							Mis Viajes
+						</Text>
+					</View>
 				</View>
 				<Divider />
 			</ScrollView>
