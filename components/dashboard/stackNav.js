@@ -4,6 +4,7 @@ import { createStackNavigator } from  'react-navigation';
 import IOSIcon from "react-native-vector-icons/Ionicons";
 import MainScreen from "./MainScreen";
 //viaje
+import NewViaje from "./viajes/NewViaje";
 
 const stackNav = createStackNavigator({
 	Main : {
@@ -19,10 +20,10 @@ const stackNav = createStackNavigator({
 			),
 		})
 	},
-	/*NewViaje: {
+	NewViaje: {
 		screen: NewViaje,
 		navigationOptions: ({navigation}) => ({title: "Nuevo Viaje"})
-	},*/
+	},
 });
 
 export default stackNav;
