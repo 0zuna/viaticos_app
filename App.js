@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useEffect, useState, useContext} from 'react';
 import {AsyncStorage, View, Text, ActivityIndicator, StyleSheet} from 'react-native';
 import Login from './components/login';
-//import Dashboard from './components/dashboard/dashboard';
+import Dashboard from './components/dashboard/dashboard';
 import axi from './bootstrap';
 import {UserProvider} from './UserContext';
 
@@ -23,7 +23,7 @@ const App=()=>{
 	}
 	fetchData()
 	},[])
-	if(auth)return <UserProvider axi={axi} auth={[auth,setAuth]} log={[log,setLog]} user={[user,setUser]}><Text>Welcome</Text></UserProvider>
+	if(auth)return <UserProvider axi={axi} auth={[auth,setAuth]} log={[log,setLog]} user={[user,setUser]}><Dashboard /></UserProvider>
 	if(log)return <Login axi={axi} auth={setAuth}/>
 
 	return (
