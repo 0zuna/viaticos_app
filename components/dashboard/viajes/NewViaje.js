@@ -7,7 +7,7 @@ import DatePicker from 'react-native-datepicker';
 
 NewViaje = () => {
 
-	const [user,setAuth,setLog,axi]=useContext(UserContext);
+	const [user,setAuth,setLog,axi,viajes,setViajes]=useContext(UserContext);
 	const [viaje, setViaje]=useState({})
 
 

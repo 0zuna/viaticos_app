@@ -13,9 +13,9 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/maleta.png",
+      "image": "./assets/3.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F9C907"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
