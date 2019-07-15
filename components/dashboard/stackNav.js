@@ -7,6 +7,7 @@ import MainScreen from "./MainScreen";
 import NewViaje from "./viajes/NewViaje";
 import ShowViaje from "./viajes/ShowViaje";
 import NewAnticipo from "./viajes/NewAnticipo";
+import NewGasto from "./viajes/NewGasto";
 
 const stackNav = createStackNavigator({
 	Main : {
@@ -33,6 +34,10 @@ const stackNav = createStackNavigator({
 	NewAnticipo: {
 		screen:NewAnticipo,
 		navigationOptions: ({navigation}) => ({title: "Anticipo"})
+	},
+	NewGasto: {
+		screen:NewGasto,
+		navigationOptions: ({navigation}) => ({title: "Nuevo Gasto"})
 	},
 });
 
