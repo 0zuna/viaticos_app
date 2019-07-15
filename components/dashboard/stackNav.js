@@ -6,6 +6,7 @@ import MainScreen from "./MainScreen";
 //viaje
 import NewViaje from "./viajes/NewViaje";
 import ShowViaje from "./viajes/ShowViaje";
+import NewAnticipo from "./viajes/NewAnticipo";
 
 const stackNav = createStackNavigator({
 	Main : {
@@ -28,6 +29,10 @@ const stackNav = createStackNavigator({
 	ShowViaje: {
 		screen: ShowViaje,
 		navigationOptions: ({navigation}) => ({title: "Mis Viajes"})
+	},
+	NewAnticipo: {
+		screen:NewAnticipo,
+		navigationOptions: ({navigation}) => ({title: "Anticipo"})
 	},
 });
 

@@ -28,7 +28,7 @@ NewViaje = () => {
 		<ThemeProvider theme={{ colors: {primary: 'black'}}}>
 			<View style={{padding:20}}>
 				<Input label="Motivo" onChangeText={(t)=>setViaje({...viaje,motivo:t})} value={viaje.motivo} placeholder='Motivo de su viaje' leftIcon={<Icon name='plane' type="font-awesome" size={24}/>}/>
-				<Input label="Anticipo" onChangeText={(t)=>setViaje({...viaje,anticipo:t})} value={viaje.anticipo} placeholder='Anticipo de su viaje' leftIcon={<Icon name='dollar' size={24}/>}/>
+				{/*<Input label="Anticipo" onChangeText={(t)=>setViaje({...viaje,anticipo:t})} value={viaje.anticipo} placeholder='Anticipo de su viaje' leftIcon={<Icon name='dollar' size={24}/>}/>*/}
 				<View style={{padding:20}}>
 				<Text>Fecha Inicio</Text>
 				<DatePicker

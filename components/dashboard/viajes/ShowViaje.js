@@ -7,12 +7,12 @@ import img_icon from '../../../assets/2.png';
 import * as ImagePicker from 'expo-image-picker'
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions'
+import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 
 
-ShowViaje = () => {
+ShowViaje = (props) => {
 
-	const [user,setAuth,setLog,axi,viajes,setViajes]=useContext(UserContext);
-	const [viaje, setViaje]=useState({gastos:[]})
+	const [user,setAuth,setLog,axi,viajes,setViajes,viaje,setViaje]=useContext(UserContext);
 	const [gasto, setGasto]=useState({})
 	const [loader,setLoader]=useState(true)
 	const [modalViaje,setModalViaje]=useState(false)
@@ -99,6 +99,13 @@ ShowViaje = () => {
 			Alert.alert("Error","Se ha producido un error porfavor verifique sus datos y vuelva a intentarlo")
 		})
 	}
+	_anticipo=(viaje) => {
+		setViaje(viaje)
+		const navigateAction = NavigationActions.navigate({
+			routeName: 'NewAnticipo'
+		});
+		props.navigation.dispatch(navigateAction);
+        }
 	if(loader)
 		return (
 			<View style={{flex: 1,justifyContent: 'center'}}>
@@ -216,16 +223,23 @@ ShowViaje = () => {
 					</View>
 					<View style={{flexDirection:'row', alignItems: 'center'}}>
 					{viaje.status=='En Curso'&&
+					<View style={{flexDirection:'row', alignItems: 'center'}}><Button
+						icon={<Icon name='dollar' color='#ffffff' />}
+						buttonStyle={{borderRadius: 0}}
+						title='Anticipo '
+						onPress={()=>_anticipo(viaje)}
+						iconRight={true}
+					/>
 					<Button
 						icon={<Icon name='dollar' color='#ffffff' />}
-						buttonStyle={{borderRadius: 0, margin:20}}
-						title='Agregar Gasto  '
+						buttonStyle={{borderRadius: 0}}
+						title='Gasto '
 						onPress={()=>_gasto(viaje)}
 						iconRight={true}
-					/>}
+					/></View>}
 					<Button
 						icon={<Icon name='eye' color='#ffffff' />}
-						buttonStyle={{borderRadius: 0, margin:20}}
+						buttonStyle={{borderRadius: 0}}
 						title='Ver  '
 						onPress={()=>ver(viaje)}
 						iconRight={true}
