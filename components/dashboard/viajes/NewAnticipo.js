@@ -16,7 +16,7 @@ NewAnticipo = (props) => {
 		.then((response)=>{
 			Alert.alert('Anticipo',`Anticipo registrado`)
 			const navigateAction = NavigationActions.navigate({
-				routeName: 'ShowViaje'
+				routeName: 'ShowViajes'
 			});
 			props.navigation.dispatch(navigateAction);
 			setViajes(response.data)
