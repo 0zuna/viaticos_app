@@ -16,6 +16,7 @@ const Login=props=>{
 		axi.post('/api/auth/login',{"email":email,"password":pass,})
 		.then(async response=> {
 			console.log(response.data);
+			props.user(response.data.user)
 			Alert.alert('Esta sesion expira el '+response.data.expires_at)
 			await AsyncStorage.setItem('secure_token',response.data.access_token);
 			props.axi.defaults.headers.common['Authorization'] = 'Bearer '+response.data.access_token;
