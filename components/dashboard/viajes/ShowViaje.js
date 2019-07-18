@@ -51,7 +51,7 @@ ShowViaje = (props) => {
 					<View style={{height:250}}>
 					<ScrollView>
 						{viaje.gastos.map((gasto,k)=>
-							<Card key={k} title={gasto.motivo} image={{uri:`${axi.defaults.baseURL}/img/${user.id}/${viaje.id}/${gasto.id}.png`}}>
+							<Card key={k} title={gasto.motivo} image={{uri:`${axi.defaults.baseURL}/img/${user.id}/viajes/${viaje.id}/${gasto.id}.jpg`}}>
 								<View style={{flexDirection: 'row', alignItems: 'center'}}>
 										<Text style={{marginBottom: 10}}>
 											costo: ${gasto.costo}

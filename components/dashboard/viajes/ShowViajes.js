@@ -137,7 +137,7 @@ ShowViaje = (props) => {
 							<Text>
 								Disponible:
 							</Text>
-							<Text style={parseInt(viaje.disponible)<=0?styles.rojo:parseInt(viaje.disponible)<=(parseInt(viaje.anticipo)/2)?styles.amarillo:styles.verde}>
+							<Text style={parseInt(viaje.disponible)<=0?styles.rojo:parseInt(viaje.disponible.match(/(\d+)/g).join(''))<=(parseInt(viaje.anticipo.match(/(\d+)/g).join(''))/2)?styles.amarillo:styles.verde}>
 								${viaje.disponible}
 							</Text>
 						</View>
