@@ -24,7 +24,7 @@ const Register=props=>{
 	}
 
 	return (
-		<ImageBackground source={require('../assets/1.png')} style={{width: '100%', height: '100%'}}>
+		<ImageBackground source={require('../assets/3.png')} style={{width: '100%', height: '100%'}}>
 			<View style={styles.container}>
 			<Icon size={40} name='arrow-circle-left' type='font-awesome' color='black' onPress={() => props.setRegister(false)} />
 				<Input label="Nombre Colaborador" onChangeText={(d)=>setData({...data,colaborador:d})} value={data.colaborador} placeholder='Nombre del Colaborador' leftIcon={<Icon name='user' size={24}/>}/>

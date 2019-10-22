@@ -1,23 +1,25 @@
-import PropTypes from 'prop-types';
-import React, {Component,useEffect, useContext} from 'react';
-import styles from './SideMenu.style';
-import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View,Button,TouchableOpacity,AsyncStorage} from 'react-native';
-import Icon from "react-native-vector-icons/Entypo";
-import {UserContext} from '../../UserContext';
-import {Divider, Avatar} from 'react-native-elements'
-import img_icon from '../../assets/2.png';
+import PropTypes from 'prop-types'
+import React, { Component,useEffect, useContext } from 'react'
+import styles from './SideMenu.style'
+import { NavigationActions } from 'react-navigation'
+import { ScrollView, Text, View,Button,TouchableOpacity,AsyncStorage } from 'react-native'
+import Icon from "react-native-vector-icons/Entypo"
+import { UserContext } from '../../UserContext'
+import { Divider, Avatar } from 'react-native-elements'
+import img_icon from '../../assets/icon.png'
 
-const SideMenu=(props)=>{
-	const [user,setAuth,setLog,axi]=useContext(UserContext);
+const SideMenu=(props) => {
+	const [user,setAuth,setLog,axi]=useContext(UserContext)
+
 	useEffect(()=>{
 		console.log(user)
 	},[])
+
 	navigateToScreen = (route) => () => {
 		const navigateAction = NavigationActions.navigate({
 			routeName: route
 		});
-		props.navigation.dispatch(navigateAction);
+		props.navigation.dispatch(navigateAction)
 	}
 
 	exit=()=>{

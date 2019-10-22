@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {UserContext} from '../../../UserContext';
 import img_icon from '../../../assets/2.png';
 import { NavigationActions } from 'react-navigation';
+import DatePicker from 'react-native-datepicker';
 
 
 ShowViaje = (props) => {
@@ -12,7 +13,7 @@ ShowViaje = (props) => {
 	const [user,setAuth,setLog,axi,viajes,setViajes,viaje,setViaje]=useContext(UserContext);
 	const [modalViaje,setModalViaje]=useState(false)
 
-	_finalizarViaje = () => {
+	const _finalizarViaje = () => {
 		console.log(viaje)
 		axi.put(`/api/auth/finalizarviaje/${viaje.id}`,viaje)
 		.then((response)=>{
@@ -31,6 +32,22 @@ ShowViaje = (props) => {
 			Alert.alert("Error","Se ha producido un error porfavor verifique sus datos y vuelva a intentarlo")
 		})
 	}
+	
+	const _updateDate = (date) => {
+		axi.put(`/api/auth/extendDate/${viaje.id}`,{...viaje,fin:date})
+		.then((response)=>{
+			Alert.alert("Update","Fecha actualizada")
+			console.log(response.data)
+			v=viajes.map((v)=>{
+				if(v.id==viaje.id){
+					v.fin=date
+				}
+				return v
+			})
+			setViajes(v)
+		})
+		.catch(r=>alert(r))
+	}
 
 	return (
 		<ThemeProvider theme={{ colors: {primary: 'black'}}}>
@@ -45,13 +62,39 @@ ShowViaje = (props) => {
 						</View>
 						<Input label="Motivo" value={viaje.motivo} leftIcon={<Icon name='plane' type="font-awesome" size={24}/>}/>
 						<Input label="Anticipo" value={viaje.anticipo} leftIcon={<Icon name='dollar' size={24}/>}/>
-						<Input label="Fecha Inicio" value={viaje.inicio} leftIcon={<Icon name='calendar' size={24}/>}/>
-						<Input label="Fecha Fin" value={viaje.fin} leftIcon={<Icon name='calendar' size={24}/>}/>
+						<Text>Fecha Inicio</Text>
+						<DatePicker
+							style={{width: 100+'%'}}
+							date={viaje.inicio}
+							mode="date"
+							placeholder="Fecha Fin"
+							format="YYYY-MM-DD"
+							minDate="2019-07-02"
+							maxDate="2020-07-02"
+							confirmBtnText="Confirmar"
+							cancelBtnText="Cancelar"
+							customStyles={{dateIcon: {position: 'absolute',left: 0,top: 4,marginLeft: 0}}}
+							disabled
+						/>
+						<Text>Fecha Fin</Text>
+						<DatePicker
+							style={{width: 100+'%'}}
+							date={viaje.fin}
+							mode="date"
+							placeholder="Fecha Fin"
+							format="YYYY-MM-DD"
+							minDate="2019-07-02"
+							maxDate="2020-07-02"
+							confirmBtnText="Confirmar"
+							cancelBtnText="Cancelar"
+							customStyles={{dateIcon: {position: 'absolute',left: 0,top: 4,marginLeft: 0}}}
+							onDateChange={(date) => {_updateDate(date)}}
+						/>
 					</View>
 					<View style={{height:250}}>
 					<ScrollView>
 						{viaje.gastos.map((gasto,k)=>
-							<Card key={k} title={gasto.motivo} image={{uri:`${axi.defaults.baseURL}/img/${user.id}/viajes/${viaje.id}/${gasto.id}.jpg`}}>
+							<Card key={k} title={gasto.motivo} image={{uri:`${axi.defaults.baseURL}/img/${user.id}/viajes/gastos/${viaje.id}/${gasto.id}.jpg`}}>
 								<View style={{flexDirection: 'row', alignItems: 'center'}}>
 										<Text style={{marginBottom: 10}}>
 											costo: ${gasto.costo}

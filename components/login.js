@@ -29,7 +29,7 @@ const Login=props=>{
 	if(register) return <Register setRegister={setRegister}/>
 
 	return (
-		<ImageBackground source={require('../assets/1.png')} style={{width: '100%', height: '100%'}}>
+		<ImageBackground source={require('../assets/3.png')} style={{width: '100%', height: '100%'}}>
 			<View style={styles.log}>
 				<Text style={{color:'white',fontSize: 20}}>Login</Text>
 				<TextInput onChangeText={(t)=>setEmail(t)} value={email} style={styles.input} placeholder={'Correo'} placeholderTextColor='rgba(255,255,255,.7)'/>

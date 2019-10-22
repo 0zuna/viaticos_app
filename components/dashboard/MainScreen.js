@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { ThemeProvider, Button } from 'react-native-elements';
 import {NavigationActions} from 'react-navigation';
+import back from '../../assets/background.png'
 
 MainScreen=(props)=>{
 
@@ -13,11 +14,9 @@ MainScreen=(props)=>{
 	}
 
 	return (
-		<ThemeProvider theme={{ colors: {primary: 'black'}}}>
-			<View style={styles.container}>
-				<Text>VIATICOS APP</Text>
-			</View>
-		</ThemeProvider>
+		<View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+			<Image resizeMode='cover' style={{width:300,height: 300}} source={back} />
+		</View>
 	)
 }
 
