@@ -1,5 +1,5 @@
 import React, {Component, useState, useContext, useEffect} from 'react';
-import { TouchableOpacity, ImageBackground, Picker, Image, Text, View, StyleSheet, Alert } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, ImageBackground, Picker, Image, Text, View, StyleSheet, Alert } from 'react-native';
 import { ThemeProvider, Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {UserContext} from '../../../UserContext';
@@ -14,23 +14,23 @@ const NewGasto = (props) => {
 	const [gasto, setGasto]=useState({})
 	const [hi,setHi]=useState({})
 	const [image, setImage]=useState(null)
+	const [loader, setLoader]=useState(false)
 
 	useEffect(()=>{
 		getPermissionAsync()
 	},[])
 
 	gastoPush=()=>{
+		setLoader(true)
 		axi.post('/api/auth/gasto',{...gasto,viaje_id:viaje.id})
 		.then((response)=>{
-			setGasto({})
+			setGasto({especificacion:'',motivo:'0',costo:''})
 			setViajes(response.data.viajes);
 			setImage(null)
+			setLoader(false)
 			Alert.alert("Gasto","Gasto cargado a su viaje\ndisponible: $"+response.data.disponible)
 		})
-		.catch((response)=>{
-			console.log(response)
-			Alert.alert("Error","Se ha producido un error porfavor verifique sus datos y vuelva a intentarlo")
-		})
+		.catch(r=>alert(r))
 	}
 	getPermissionAsync = async () => {
 		const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -58,6 +58,14 @@ const NewGasto = (props) => {
 			setImage(result.uri);
 		}
 	}
+
+	if(loader)
+		return (
+			<View style={{flex: 1,justifyContent: 'center'}}>
+				<ActivityIndicator size="large" color="#0000ff" />
+			</View>
+		)
+
 	return (
 		<ThemeProvider theme={{ colors: {primary: 'black'}}}>
 			<View style={{flex:1,marginTop: 22,backgroundColor: 'rgba(255,255,255,.8)'}}>
