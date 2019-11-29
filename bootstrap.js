@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-baseURL: 'http://189.207.245.56/viaticos-api/public',
+baseURL: 'http://3.19.190.69/viaticos-api',
 //baseURL: 'http://192.168.15.30/usupso/viaticos/API/public',
   headers: {
       'Content-Type': 'application/json',
